@@ -11,6 +11,7 @@ public class Trilha {
 	private int idTrilha;
 	private double distancia;
 	private int idMata;
+	private int dificuldade;
 	private String nicknameUsuario;
 	
 	/**
@@ -87,6 +88,14 @@ public class Trilha {
 
 	public void setNicknameUsuario(String nicknameUsuario) {
 		this.nicknameUsuario = nicknameUsuario;
+	}
+
+	public int getDificuldade() {
+		return dificuldade;
+	}
+
+	public void setDificuldade(int dificuldade) {
+		this.dificuldade = dificuldade;
 	}
 
 

@@ -19,8 +19,7 @@ public class TrilhaDAO {
 	 * Esse método resgistra uma trilha no banco de dados
 	 * @param trilha objeto da classe Trilha
 	 * */
-	public void registrarTrilha(Trilha trilha) {
-		
+	public boolean registrarTrilha(Trilha trilha) {
 		
 		try {
 			Connection conexao = factoryConnection.getConnection();
@@ -39,10 +38,10 @@ public class TrilhaDAO {
 			conexao.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
-		
+		return true;
 	}
 	
 	/**
@@ -329,7 +328,7 @@ public class TrilhaDAO {
 	}
 
 	/**
-	 * Esse método é chamado para gravar no banco o histórico de trilhas utilizadas/consumidas por um usuario
+	 * Esse método é chamado quando se deseja saber a quantidade de meios de locomoção existentes
 	 @return quantidade de meios de locomocao registrados  
 	 * */
 	public int consultarQtdMeiosLocomocao()
