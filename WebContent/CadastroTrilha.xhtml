@@ -31,7 +31,7 @@
 			
 			<h:outputLabel value="Tipo de mata:" for="escolhaMata"/>
 			<h:selectOneMenu value="#{trilhaBean.idMata}" id="escolhaMata">
-			<f:selectItem itemLabel="Escolha o tipo de mata:"/>
+			<f:selectItem itemLabel="Escolha o tipo de mata:" itemValue="-1"/>
 			<f:selectItems value="#{trilhaBean.matas}" var="mata" itemValue="#{mata.id}" itemLabel="#{mata.descricao}"/>
 			</h:selectOneMenu>
 						

@@ -41,6 +41,30 @@ public class TrilhaBean {
 			return "RespostaCadastroTrilha.xhtml";
 		return "";
 	}
+	
+	public String consultar()
+	{
+		ArrayList<Trilha> trilhas = null;
+		System.out.println("Consultando...");
+		System.out.println(apelido + " " + distancia + " " + idMata + " " + nicknameUsuario);
+		double distConsulta;
+		int consultaIdMata;
+		
+		if(distancia == 0.0)
+			distConsulta = -1;
+		else
+			distConsulta = distancia;
+		
+		if(idMata == 0)
+			consultaIdMata = -1;
+		else
+			consultaIdMata = idMata;
+		
+		System.out.println(apelido + " " + distConsulta + " " + consultaIdMata + " " + nicknameUsuario);
+		trilhas= trilhaDao.buscarTrilha(apelido, distancia, consultaIdMata, -1, nicknameUsuario, -1);
+		System.out.println(trilhas);
+		return "";
+	}
 
 	public String getApelido() {
 		return apelido;

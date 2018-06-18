@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import modelo.pojo.Trilha;
 
@@ -84,7 +85,7 @@ public class TrilhaDAO {
 	 * @param idLocomocao id do meio de locomocao, presente na tbTipoDeLocomocao
 	 * @return ResultSet com todos os atributos das trilhas que condizem com a pesquisa
 	 * */
-	public ResultSet buscarTrilha(String apelido, double distancia, int idMata, int dificuldade, String nicknameUsuario, int idLocomocao) {
+	public ArrayList<Trilha> buscarTrilha(String apelido, double distancia, int idMata, int dificuldade, String nicknameUsuario, int idLocomocao) {
 		/*
 		 * Primeiramente, peço desculpas pelo código feio e as gambiarras presentes nessa função, mas não vou refatorar não,
 		 * já tá dificil de fazer, e não to usando git.
@@ -95,6 +96,7 @@ public class TrilhaDAO {
 		 * A segunda sequencia de IF faz pstmt.setString();
 		 * */
 		ResultSet rs = null;
+		ArrayList<Trilha> trilhas = new ArrayList<Trilha>();
 		Connection conexao = factoryConnection.getConnection();
 		String sql =  "select * from tbTrilha where 1=1 ";
 		//ifs para ver se o campo é "nulo" (nulo = -1) para criar o PreparedStatement
@@ -130,7 +132,7 @@ public class TrilhaDAO {
 			//ifs para ver se o campo é "nulo" (nulo = -1) para fazer setString
 			if( (apelido.equalsIgnoreCase("null")) == false)
 			{
-				pstmt.setString(i, (apelido+"%") );
+				pstmt.setString(i, ("%"+apelido+"%") );
 				i++; 
 			}
 			if(distancia != -1)
@@ -166,7 +168,25 @@ public class TrilhaDAO {
 			e.printStackTrace();
 			System.out.println(sql);
 		}
-		return rs;
+		
+			try {
+				while(rs.next()) 
+				{
+					//int resultidTrilha = rs.getInt("idTrilha");
+					String resultapelido = rs.getString("apelido");
+					String resultObstaculos = rs.getString("obstaculos");
+					double resulTdistancia = rs.getDouble("distancia");
+					int ResultIdMata = rs.getInt("idMata");
+					String resultNicknameUsuario = rs.getString("nicknameUsuario");
+					//LocalDate resultDataGravacao =  rs.getDate("dataGravacao").toLocalDate();
+					Trilha trilha = new Trilha(resultapelido, resultObstaculos, resulTdistancia, ResultIdMata, resultNicknameUsuario);
+					trilhas.add(trilha);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return trilhas;
 	}
 
 	/**

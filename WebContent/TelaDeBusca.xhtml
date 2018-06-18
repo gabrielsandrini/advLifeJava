@@ -11,15 +11,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+<title>Tela de busca</title>
 </head>
 <body>
 <f:view>
-	<h:outputLabel value="Menu" style="font-weight: bold"/><br /><br/>
-	<h:outputLabel value="Buscar Trilhas" outcome="TelaDeBusca.xhtml">
-	<h:outputLabel value="Trilhas Gravadas" outcome="PaginaNaoExistente.xhtml">
-	<h:outputLabel value="Trilhas Utilizadas" outcome="CadastroTrilha.xhtml">
-	<h:outputLabel value="Sair" outcome="PaginaInicial.xhtml">
+	<h:form>
+	<h:panelGrid columns="2">
+		<h:outputLabel value="Tela De Busca"/>
+		<h:outputLabel value=""/>
+	
+		<h:outputLabel value="Apelido:" for="apelido"/>
+		<h:inputText value="#{trilhaBean.apelido}"/>
+		
+		<h:outputLabel value="Distancia:" for="distancia"/>
+		<h:inputText value="#{trilhaBean.distancia}"/>
+		
+		
+		<h:outputLabel value="Tipo de mata:" for="escolhaMata"/>
+			<h:selectOneMenu value="#{trilhaBean.idMata}" id="escolhaMata">
+			<f:selectItem itemLabel="Escolha o tipo de mata:"/>
+			<f:selectItems value="#{trilhaBean.matas}" var="mata" itemValue="#{mata.id}" itemLabel="#{mata.descricao}"/>
+		</h:selectOneMenu>
+		
+		<h:outputLabel value="Nickname de quem gravou:" for="nickname"/>
+		<h:inputText value="#{trilhaBean.nicknameUsuario}"/>
+		
+		<h:commandButton value="Consultar" action="#{trilhaBean.consultar}"/>
+		<h:commandButton value="Cancelar" outcome="Menu.xhtml"/>
+	</h:panelGrid>
+	</h:form>
 </f:view>
 </body>
 </html>
