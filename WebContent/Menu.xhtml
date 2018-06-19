@@ -12,17 +12,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Menu</title>
+  <link rel="stylesheet" type="text/css" href="materialize.min.css" />
 </head>
 <body>
 <f:view>
-	<h:panelGrid columns="1">
-	<h:outputLabel value="Menu" style="font-weight: bold"/><br /><br/>
-	<h:link value="Buscar Trilhas" outcome="TelaDeBusca.xhtml"/>
-	<h:link value="Gravar Trilha" outcome="CadastroTrilha.xhtml"/>
-	<h:link value="Trilhas Gravadas" outcome="TrilhasGravadas.xhtml"/>
-	<h:link value="Trilhas Utilizadas" outcome="TrilhasUtilizadas.xhtml"/>
-	<h:link value="Sair" outcome="PaginaPrincipal.xhtml"/>
-	</h:panelGrid>
+	<div class="container">	
+	<h1 class="center">Menu</h1>
+	<p class="center">Usuario #{usuarioBean.nickname}</p>
+	<h:link value="Buscar Trilhas" outcome="TelaDeBusca.xhtml" class="btn waves-effect waves-light"/> <br />
+	<h:link value="Gravar Trilha" outcome="CadastroTrilha.xhtml" class="btn waves-effect waves-light"/> <br />
+	<h:link value="Trilhas Gravadas" outcome="TrilhasGravadas.xhtml" class="btn waves-effect waves-light"/> <br />
+	<h:link value="Trilhas Utilizadas" outcome="TrilhasUtilizadas.xhtml" class="btn waves-effect waves-light"/> <br />
+	<h:link value="Sair" outcome="PaginaPrincipal.xhtml" class="btn waves-effect waves-light"/> <br />
+	</div>
+
 </f:view>
 </body>
 </html>

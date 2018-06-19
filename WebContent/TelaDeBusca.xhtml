@@ -11,20 +11,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <link rel="stylesheet" type="text/css" href="materialize.min.css" />
 <title>Tela de busca</title>
+<style>
+  	select
+  	{
+  		visibility: visible;
+  		display: block;
+  	}
+  </style>
 </head>
 <body>
+<div class="container">
 <f:view>
+	<h1 class="center">Tela de busca</h1>
+	<fieldset>
 	<h:form>
-	<h:panelGrid columns="2">
-		<h:outputLabel value="Tela De Busca"/>
-		<h:outputLabel value=""/>
-	
 		<h:outputLabel value="Apelido:" for="apelido"/>
-		<h:inputText value="#{trilhaBean.apelido}"/>
+		<h:inputText value="#{trilhaBean.apelido}" id="apelido"/>
 		
 		<h:outputLabel value="Distancia:" for="distancia"/>
-		<h:inputText value="#{trilhaBean.distancia}"/>
+		<h:inputText value="#{trilhaBean.distancia}" id="distancia"/>
 		
 		
 		<h:outputLabel value="Tipo de mata:" for="escolhaMata"/>
@@ -34,13 +41,15 @@
 		</h:selectOneMenu>
 		
 		<h:outputLabel value="Nickname de quem gravou:" for="nickname"/>
-		<h:inputText value="#{trilhaBean.nicknameUsuario}"/>
+		<h:inputText value="#{trilhaBean.nicknameUsuario}" id="nickname"/>
 		
-		<h:commandButton value="Consultar" action="#{trilhaBean.consultar}"/>
-		<h:commandButton value="Cancelar" outcome="Menu.xhtml"/>
-	</h:panelGrid>
+		<h:commandButton value="Consultar" action="#{trilhaBean.consultar}" class="btn waves-effect waves-light"/>
+		<span></span>
+		<h:link value="Cancelar" outcome="Menu.xhtml" class="btn waves-effect waves-light"/>
 	</h:form>
+	</fieldset>
 </f:view>
+</div>
 </body>
 </html>
 </jsp:root>

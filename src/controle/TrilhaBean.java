@@ -23,6 +23,7 @@ public class TrilhaBean {
 		private TrilhaDAO trilhaDao;
 		private MataDAO mataDao;
 		private ArrayList<Mata> matas;
+		private ArrayList<Trilha> trilhas;
 		
 	public TrilhaBean() 
 	{
@@ -44,24 +45,47 @@ public class TrilhaBean {
 	
 	public String consultar()
 	{
-		ArrayList<Trilha> trilhas = null;
+		/*
+		 * Essa sequencia de ifs presentes nessa função verifica se os parametros foram passados na tela, caso não foram
+		 * ele seta -1 para os valores numericos e a string "null" para as strings e consulta no banco.
+		 * 
+		 * Sorry pela gambiarra
+		 * */
+		String apelidoConsulta = "null";
+		double distanciaConsulta;
+		int idMataConsulta;
+		String nicknameUsuarioConsulta;
+		trilhas = null;
 		System.out.println("Consultando...");
-		System.out.println(apelido + " " + distancia + " " + idMata + " " + nicknameUsuario);
-		double distConsulta;
-		int consultaIdMata;
+		
+		if(apelido == "" || apelido == null || apelido == " ")
+			apelidoConsulta = "null";
+		else
+			apelidoConsulta = apelido;
 		
 		if(distancia == 0.0)
-			distConsulta = -1;
+			distanciaConsulta = -1;
 		else
-			distConsulta = distancia;
+			distanciaConsulta = distancia;
 		
 		if(idMata == 0)
-			consultaIdMata = -1;
+			idMataConsulta = -1;
 		else
-			consultaIdMata = idMata;
+			idMataConsulta = idMata;
 		
-		System.out.println(apelido + " " + distConsulta + " " + consultaIdMata + " " + nicknameUsuario);
-		trilhas= trilhaDao.buscarTrilha(apelido, distancia, consultaIdMata, -1, nicknameUsuario, -1);
+		if(nicknameUsuario == "" || nicknameUsuario == null || nicknameUsuario == " ")
+			nicknameUsuarioConsulta = "null";
+		else 
+			nicknameUsuarioConsulta = nicknameUsuario;
+		
+		int dificuldadeConsulta = -1;
+		int idLocomocaoConsulta = -1;
+		
+		System.out.println("Dados brutos: " + apelido + " " + distancia + " " + idMata + " " + nicknameUsuario);
+		System.out.println("Dados Tratados: " +apelidoConsulta + " " + distanciaConsulta + " " + idMataConsulta + " "
+		+ nicknameUsuarioConsulta);
+		trilhas= trilhaDao.buscarTrilha(apelidoConsulta, distanciaConsulta, idMataConsulta, dificuldadeConsulta,
+				nicknameUsuarioConsulta, idLocomocaoConsulta);
 		System.out.println(trilhas);
 		return "";
 	}
@@ -124,6 +148,14 @@ public class TrilhaBean {
 
 	public ArrayList<Mata> getMatas() {
 		return matas;
+	}
+
+	public ArrayList<Trilha> getTrilhas() {
+		return trilhas;
+	}
+
+	public void setTrilhas(ArrayList<Trilha> trilhas) {
+		this.trilhas = trilhas;
 	}
 
 	public void setMatas(ArrayList<Mata> matas) {

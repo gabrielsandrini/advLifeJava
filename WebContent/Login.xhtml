@@ -10,24 +10,26 @@
     </jsp:text>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <link rel="stylesheet" type="text/css" href="materialize.min.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Login</title>
 </head>
 <body>
+<div class="container">
 <f:view>
-	<h:outputLabel value="Login:" style="font-weight: bold"/>
-	
+	<h1 class="center">Login</h1>
+	<fieldset>
 	<h:form>
-	<h:panelGrid columns="2">
 		<h:outputLabel value ="Nickname:" for="nickname"/>
 		<h:inputText value="#{usuarioBean.nickname}" id="nickname"/> 
 		<h:outputLabel value="Senha: " for="senha" />
-		<h:inputSecret value="#{usuarioBean.senha}" />
-		<h:commandButton value="Entrar" action="#{usuarioBean.logar}"/>
-	</h:panelGrid>
+		<h:inputSecret value="#{usuarioBean.senha}" id="senha" />
+		<h:commandButton value="Entrar" action="#{usuarioBean.logar}" class="btn waves-effect waves-dark"/>
 	</h:form>
+	</fieldset>
 		
 </f:view>
+</div>
 </body>
 </html>
 </jsp:root>

@@ -10,17 +10,18 @@
     </jsp:text>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <link rel="stylesheet" type="text/css" href="materialize.min.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+<title>Cadastro de trilhas</title>
 </head>
 <body>
+<div class="container">
 <f:view>
-	<h:form>
-		<h:outputLabel value="Cadastro de Trilhas"  style="font-weight: bold"  /><br/><br/>
-        <h:outputLabel value="Trilha #{trilhaBean.apelido} cadastrada com sucesso!"  style="font-weight: bold"  /><br/><br/>
-        <h:link value="Menu" outcome="Menu.xhtml"/>
-	</h:form>
+		<h1 class="center">Cadastro de trilhas</h1>
+        <p class= "flow-text center"> Trilha #{trilhaBean.apelido} cadastrada com sucesso!</p>
+        <h:link value="Menu" outcome="Menu.xhtml" class="btn waves-effect waves-light"/>
 </f:view>
+</div>
 </body>
 </html>
 </jsp:root>

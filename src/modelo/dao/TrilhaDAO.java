@@ -85,7 +85,8 @@ public class TrilhaDAO {
 	 * @param idLocomocao id do meio de locomocao, presente na tbTipoDeLocomocao
 	 * @return ResultSet com todos os atributos das trilhas que condizem com a pesquisa
 	 * */
-	public ArrayList<Trilha> buscarTrilha(String apelido, double distancia, int idMata, int dificuldade, String nicknameUsuario, int idLocomocao) {
+	public ArrayList<Trilha> buscarTrilha(String apelido, double distancia, int idMata, int dificuldade, String nicknameUsuario,
+			int idLocomocao) {
 		/*
 		 * Primeiramente, peço desculpas pelo código feio e as gambiarras presentes nessa função, mas não vou refatorar não,
 		 * já tá dificil de fazer, e não to usando git.

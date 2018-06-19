@@ -10,15 +10,16 @@
     </jsp:text>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <link rel="stylesheet" type="text/css" href="materialize.min.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Cadastro de usuario</title>
 </head>
 <body>
 <f:view>
-	<h:form>
-		<h:outputLabel value="Cadastro de Usuário" style="font-weight: bold"/><br /><br />
-		<h:panelGrid columns="2">
-		
+	<div  class="container">
+	<h1>Cadastro de usuario</h1>	
+	<fieldset>
+	<h:form>		
 			<h:outputLabel value="Nickname(Utilizado para login):" for="nickname"/>
 			<h:inputText value="#{usuarioBean.nickname}" id="nickname"/>
 			
@@ -31,12 +32,10 @@
 			<h:outputLabel value="E-mail:" for="email"/>
 			<h:inputText value="#{usuarioBean.email}" id="email"/>
 			
-		
-		
-		</h:panelGrid> 
-		<h:commandButton value="Salvar" action="#{usuarioBean.cadastrar}"/>
+		<h:commandButton value="Salvar" action="#{usuarioBean.cadastrar}" class="center btn waves-effect waves-light"/>
 	</h:form>
-	
+	</fieldset>
+	</div>
 </f:view>
 </body>
 </html>

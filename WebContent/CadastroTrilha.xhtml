@@ -11,26 +11,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <link rel="stylesheet" type="text/css" href="materialize.min.css" />
+  <style>
+  	select
+  	{
+  		visibility: visible;
+  		display: block;
+  	}
+  </style>
 <title>Cadastro de trilha</title>
 </head>
 <body>
+<div class="container">
 <f:view>
-
-<h:form>
-		<h:outputLabel value="Cadastro de Trilhas" style="font-weight: bold"/><br /><br />
-		<h:panelGrid columns="2">
-		
+<h1 class="center">Cadastro de Trilhas</h1>
+<fieldset>
+<h:form>		
 			<h:outputLabel value="Apelido:" for="apelido"/>
-			<h:inputText value="#{trilhaBean.apelido}" id="apelido"/>
+			<h:inputText value="#{trilhaBean.apelido}" id="apelido" class="validate"/>
 			
 			<h:outputLabel value="Obstáculos:" for="obstaculos"/>
 			<h:inputTextarea value="#{trilhaBean.osbtaculos}" id="obstaculos"/>
 		
 			<h:outputLabel value="Distância(km):" for="distancia"/>
-			<h:inputText value="#{trilhaBean.distancia}" id="distancia"/>
+			<h:inputText value="#{trilhaBean.distancia}" id="distancia" />
 			
 			<h:outputLabel value="Tipo de mata:" for="escolhaMata"/>
-			<h:selectOneMenu value="#{trilhaBean.idMata}" id="escolhaMata">
+			<h:selectOneMenu value="#{trilhaBean.idMata}" id="escolhaMata" >
 			<f:selectItem itemLabel="Escolha o tipo de mata:" itemValue="-1"/>
 			<f:selectItems value="#{trilhaBean.matas}" var="mata" itemValue="#{mata.id}" itemLabel="#{mata.descricao}"/>
 			</h:selectOneMenu>
@@ -38,13 +45,13 @@
 			<h:outputLabel value="Usuário:" for="usuario"/>
 			<h:inputText value="#{trilhaBean.nicknameUsuario}" id="usuario"/>
 
-		</h:panelGrid> 
-		<h:commandButton value="Salvar" action="#{trilhaBean.cadastrar}"/>
-		<h:commandButton value="Cancelar" outcome="Menu"/>
+		<h:commandButton value="Salvar" action="#{trilhaBean.cadastrar}" class="btn waves-effect waves-light" />
+		<span></span>
+		<h:link value="Cancelar" outcome="Menu" class="btn waves-effect waves-light"/>
 	</h:form>
-
-
+</fieldset>
 </f:view>
+</div>
 </body>
 </html>
 </jsp:root>
