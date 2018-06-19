@@ -31,7 +31,9 @@
 		<h:inputText value="#{trilhaBean.apelido}" id="apelido"/>
 		
 		<h:outputLabel value="Distancia:" for="distancia"/>
-		<h:inputText value="#{trilhaBean.distancia}" id="distancia"/>
+		<h:inputText value="#{trilhaBean.distancia}" id="distancia" >
+			<f:convertNumber locale="pt_BR"/>
+		</h:inputText>
 		
 		
 		<h:outputLabel value="Tipo de mata:" for="escolhaMata"/>
