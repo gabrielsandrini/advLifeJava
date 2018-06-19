@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<jsp:root 
+xmlns:jsp="http://java.sun.com/JSP/Page"
+ xmlns:f="http://java.sun.com/jsf/core" 
+ xmlns:h="http://java.sun.com/jsf/html" version="2.0"
+ xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+    <jsp:directive.page language="java"
+        contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" />
+    <jsp:text>
+        <![CDATA[ <?xml version="1.0" encoding="ISO-8859-1" ?> ]]>
+    </jsp:text>
+    <jsp:text>
+        <![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
+    </jsp:text>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <link rel="stylesheet" type="text/css" href="materialize.min.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Avaliar Trilha</title>
+</head>
+<body>
+<div class="container">
+<f:view>
+	<h1 class="center">Avaliar trilha</h1>
+	<fieldset>
+	<h:form>
+	<h5 class="center">Insira valores entre 1 e 5: </h5>
+		<ui:repeat value="#{avaliacaoBean.criterios}" var="criterio">
+			<h:outputLabel value="#{criterio.descricao}" /> 
+			<h:inputText value="#{criterio.nota}"/>
+			<br />
+		</ui:repeat>
+		<h:outputLabel value="Id da trilha"/>
+		<h:commandButton value="Enviar" action="#{avaliacaoBean.cadastrarAvaliacao}" class="btn waves-effect waves-light"/>
+		<span></span>
+		<h:link value="Cancelar" outcome="Menu.xhtml" class="btn waves-effect waves-light"/>
+		
+	</h:form>
+	</fieldset>
+</f:view>
+</div>
+</body>
+</html>
+</jsp:root>

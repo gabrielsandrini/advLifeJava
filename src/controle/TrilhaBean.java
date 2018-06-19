@@ -129,6 +129,7 @@ public class TrilhaBean {
 	public void setDistancia(double distancia) {
 		this.distancia = distancia;
 	}
+	
 
 	public int getIdMata() {
 		return idMata;

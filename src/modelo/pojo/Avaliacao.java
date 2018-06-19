@@ -4,10 +4,9 @@ import java.time.LocalDate;
 /**
  * Essa classe se remete a parte de avaliações de trilhas presente no sistema
  * */
-public class Avaliacao {
+public class Avaliacao extends CriterioAvaliacao {
 	private String idAvaliacao, comentario;
-	private int idCriterio, nota;
-	LocalDate dataDeRealizacao;
+	private LocalDate dataDeRealizacao;
 	
 	/**
 	 * Construtor para a criação de um objeto quando já se tem o id da avaliacao que ele se refere
@@ -19,10 +18,9 @@ public class Avaliacao {
 	 * */
 	public Avaliacao(String idAvaliacao, String comentario, int idCriterio, int nota)
 	{
+		super(idCriterio, nota);
 		this.idAvaliacao = idAvaliacao;
 		this.comentario = comentario;
-		this.idCriterio = idCriterio;
-		this.nota = nota;
 		dataDeRealizacao = LocalDate.now();
 	}
 	
@@ -35,8 +33,8 @@ public class Avaliacao {
 	 * */
 	public Avaliacao(int idCriterio, int nota, String comentario)
 	{
+		super(idCriterio);
 		this.comentario = comentario;
-		this.idCriterio = idCriterio;
 		this.nota = nota;
 		dataDeRealizacao = LocalDate.now();
 	}
