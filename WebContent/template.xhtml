@@ -13,6 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Adv Life</title>
 <link rel="stylesheet" href="materialize.min.css" />
+
 </head>
 <body>
 <f:view>
@@ -21,17 +22,35 @@
 			<div class="nav-wrapper">
 			<a href="#" class="brand-logo">Adv Life</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li> <a href="TrilhasUtilizadas.xhtml">Historico</a> </li>
-			 	<li> <a href="TelaDeBusca.xhtml">Buscar trilha</a> </li>
-			 	<li> <a href="CadastroTrilha.xhtml" >Gravar Trilha</a> </li>
-			 	<li> <a href="TrilhasGravadas.xhtml">Trilhas Gravadas</a> </li>
-			 	<li> <a>Sair</a> </li>
+				<li id="link1" class="" > <a href="TrilhasUtilizadas.xhtml">Historico</a> </li>
+			 	<li id="link2" > <a href="TelaDeBusca.xhtml">Buscar trilha</a> </li>
+			 	<li id="link3" > <a href="CadastroTrilha.xhtml" >Gravar Trilha</a> </li>
+			 	<li id="link4" > <a href="TrilhasGravadas.xhtml">Trilhas Gravadas</a> </li>
+			 	<li id="link5" > <a>Sair</a> </li>
 			</ul>	
 			</div>
 		</nav>
 	</header>
 	<ui:insert name="body">Corpo da página</ui:insert>
-	
+	<input id="link" type="hidden" value="#{link}"></input>
+	<SCRIPT type="text/javascript">
+	var link = document.getElementById("link").value;
+	console.log(link);
+	switch (link) {
+	case "link1":
+		document.getElementById("link1").className += "active";
+	break;
+	case "link2":
+		document.getElementById("link2").className += "active";
+	break;
+	case "link3":
+		document.getElementById("link3").className += "active";
+	break;
+	case "link4":
+		document.getElementById("link4").className += "active";
+	break;
+	}
+</SCRIPT>
 </f:view>
 </body>
 </html>
