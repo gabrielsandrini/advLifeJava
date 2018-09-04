@@ -1,39 +1,30 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.0">
-    <jsp:directive.page language="java"
-        contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" />
-    <jsp:text>
-        <![CDATA[ <?xml version="1.0" encoding="ISO-8859-1" ?> ]]>
-    </jsp:text>
-    <jsp:text>
-        <![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
-    </jsp:text>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-  <link rel="stylesheet" type="text/css" href="materialize.min.css" />
-  <style>
-  	select
-  	{
-  		visibility: visible;
-  		display: block;
-  	}
+	<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+  	xmlns:h="http://java.sun.com/jsf/html" >
+	
+	<ui:param name="link" value="link3" />
+	
+	<ui:define name="body">
+		<style>
+  			select
+  			{
+  				visibility: visible;
+  				display: block;
+  			}
   </style>
-<title>Cadastro de trilha</title>
-</head>
-<body>
-<div class="container">
-<f:view>
-<h1 class="center">Cadastro de Trilhas</h1>
+  <h3 class="center">Cadastro de Trilhas</h3>
 <fieldset>
 <h:form>		
 			<h:outputLabel value="Apelido:" for="apelido"/>
 			<h:inputText value="#{trilhaBean.apelido}" id="apelido" class="validate"/>
 			
-			<h:outputLabel value="Obstáculos:" for="obstaculos"/>
+			<h:outputLabel value="ObstÃ¡culos:" for="obstaculos"/>
 			<h:inputTextarea value="#{trilhaBean.osbtaculos}" id="obstaculos"/>
 		
-			<h:outputLabel value="Distância(km):" for="distancia"/>
+			<h:outputLabel value="DistÃ¢ncia(km):" for="distancia"/>
 			<h:inputText value="#{trilhaBean.distancia}" id="distancia" >
 				<f:convertNumber locale="pt_BR"/>
 			</h:inputText>
@@ -44,7 +35,7 @@
 			<f:selectItems value="#{trilhaBean.matas}" var="mata" itemValue="#{mata.id}" itemLabel="#{mata.descricao}"/>
 			</h:selectOneMenu>
 						
-			<h:outputLabel value="Usuário:" for="usuario"/>
+			<h:outputLabel value="UsuÃ¡rio:" for="usuario"/>
 			<h:inputText value="#{trilhaBean.nicknameUsuario}" id="usuario"/>
 
 		<h:commandButton value="Salvar" action="#{trilhaBean.cadastrar}" class="btn waves-effect waves-light" />
@@ -52,8 +43,7 @@
 		<h:link value="Cancelar" outcome="Menu" class="btn waves-effect waves-light"/>
 	</h:form>
 </fieldset>
-</f:view>
-</div>
-</body>
-</html>
-</jsp:root>
+	</ui:define>
+	
+	</ui:composition>
+  
