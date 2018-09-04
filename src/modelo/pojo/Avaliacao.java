@@ -23,6 +23,12 @@ public class Avaliacao extends CriterioAvaliacao {
 		this.comentario = comentario;
 		dataDeRealizacao = LocalDate.now();
 	}
+	public Avaliacao(String idAvaliacao, int idCriterio, int nota)
+	{
+		super(idCriterio, nota);
+		this.idAvaliacao = idAvaliacao;
+		dataDeRealizacao = LocalDate.now();
+	}
 	
 	/**
 	 * Construtor para a criação de um objeto quando não se tem o id da avaliacao que ele se refere

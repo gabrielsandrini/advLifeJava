@@ -25,14 +25,16 @@ xmlns:jsp="http://java.sun.com/JSP/Page"
 	<h1 class="center">Avaliar trilha</h1>
 	<fieldset>
 	<h:form>
+	
+	<h:outputLabel value="Id da trilha"/>
+	<h:inputText value="#{avaliacaoBean.idTrilha}" />
+		
 	<h5 class="center">Insira valores entre 1 e 5: </h5>
 		<ui:repeat value="#{avaliacaoBean.criterios}" var="criterio">
 			<h:outputLabel value="#{criterio.descricao}" /> 
 			<h:inputText value="#{criterio.nota}"/>
 			<br />
 		</ui:repeat>
-		<h:outputLabel value="Id da trilha"/>
-		<h:inputText value="#{avaliacaoBean.}"/>
 		<h:commandButton value="Enviar" action="#{avaliacaoBean.cadastrarAvaliacao}" class="btn waves-effect waves-light"/>
 		<span></span>
 		<h:link value="Cancelar" outcome="Menu.xhtml" class="btn waves-effect waves-light"/>

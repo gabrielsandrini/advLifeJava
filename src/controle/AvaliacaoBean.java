@@ -17,20 +17,34 @@ public class AvaliacaoBean {
 	private LocalDate dataDeRealizacao;
 	private ArrayList<CriterioAvaliacao> criterios; 
 	private int[] listaNotas = {1,2,3,4,5};
+	Avaliacao avaliacao[] = null;
 	
 	public AvaliacaoBean() 
 	{
 		CriterioAvaliacaoDAO criterioDao= new CriterioAvaliacaoDAO(); 
-		setCriterios(criterioDao.consultarCriterios());		
+		setCriterios(criterioDao.consultarCriterios());
+		
+		comentario = null;
+		
+		//set notas = 1:
+		for(int i = 0; criterios.size() > i; i++ )
+		{
+			criterios.get(i).setNota(1);
+		}
 	}
 	
 	public String cadastrarAvaliacao()
 	{
 		AvaliacaoDao avaliacaoDao = new AvaliacaoDao();
-		Avaliacao avaliacao[] = new Avaliacao(idAvaliacao, " ", idCriterio, nota);
+		
+		for(int i = 0; criterios.size() > i; i++ )
+		{
+			criterios.get(i).setNota(nota);
+			avaliacao[i] = new Avaliacao(criterios.get(i).getIdCriterio(),criterios.get(i).getNota(), comentario);
+		}		
 		
 		avaliacaoDao.inserirAvaliacao(idTrilha, nickname, avaliacao);
-		return "";
+		return "Menu.xhtml";
 	}
 	
 	public String getIdAvaliacao() {
