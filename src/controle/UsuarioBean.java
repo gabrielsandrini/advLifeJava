@@ -1,6 +1,10 @@
 package controle;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import modelo.dao.UsuarioDAO;
 import modelo.pojo.Usuario;
@@ -24,9 +28,31 @@ public class UsuarioBean {
 		System.out.println("Buscando...");
 		boolean sucefull = usuDao.colsultaSenha(nickname, senha);
 		System.out.println(sucefull);
-		if(sucefull)
-			return "Menu";
-		return "this";
+		FacesContext fc = FacesContext.getCurrentInstance();
+		if(sucefull) {
+			ExternalContext ec = fc.getExternalContext();
+			HttpSession session = (HttpSession) ec.getSession(false);
+			session.setAttribute("nickname", nickname);
+			return "TrilhasUtilizadas";
+		}
+		else {
+			FacesMessage fm = new FacesMessage("Usuario e/ou senha inválidos");
+			fm.setSeverity(FacesMessage.SEVERITY_ERROR);
+			fc.addMessage(null, fm);
+			return "this"; 
+		}
+	}
+	
+	public String logout() 
+	{
+		System.out.println("Saindo");
+		FacesContext fc = FacesContext.getCurrentInstance();
+		ExternalContext ec = fc.getExternalContext();
+		HttpSession session = (HttpSession) ec.getSession(false);
+		session.invalidate();
+		System.out.println("Killed in the name of");
+		return "Login.xhtml";
+		
 	}
 
 	public String cadastrar()

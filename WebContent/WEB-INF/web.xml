@@ -9,12 +9,10 @@
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
-  
   <error-page>
-  <error-code>404</error-code>
-   <location>/PaginaNaoExistente.xhtml</location>
+    <error-code>404</error-code>
+    <location>/PaginaNaoExistente.xhtml</location>
   </error-page>
-  
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
