@@ -40,7 +40,7 @@ public class LoginFilter implements Filter {
 		HttpSession session = req.getSession();
 		
 		if (session.getAttribute("nickname")!=null || req.getRequestURI().endsWith("Login.xhtml") ||
-			req.getRequestURI().endsWith("CadastroUsuario.xhtml")) {
+			req.getRequestURI().endsWith("CadastroUsuario.xhtml") || req.getRequestURI().endsWith("index.xhtml") ) {
 			
 			chain.doFilter(request, response);
 		} else {

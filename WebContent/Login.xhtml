@@ -24,9 +24,11 @@
 		<h:inputText value="#{usuarioBean.nickname}" id="nickname"/> 
 		<h:outputLabel value="Senha: " for="senha" />
 		<h:inputSecret value="#{usuarioBean.senha}" id="senha" />
-		<h:commandButton value="Entrar" action="#{usuarioBean.logar}" class="btn waves-effect waves-dark"/>
+		<h:commandButton value="Entrar" action="#{usuarioBean.logar}" class="btn waves-effect waves-dark green"/>
 	</h:form>
 	</fieldset>
+	<h4>Ainda não é cadastrado ? </h4> 
+	<h:button outcome="CadastroUsuario.xhtml" class="btn waves-effect waves-dark green" value="Cadastre-se" />
 		
 </f:view>
 </div>
