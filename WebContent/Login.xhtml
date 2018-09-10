@@ -24,6 +24,7 @@
 		<h:inputText value="#{usuarioBean.nickname}" id="nickname"/> 
 		<h:outputLabel value="Senha: " for="senha" />
 		<h:inputSecret value="#{usuarioBean.senha}" id="senha" />
+		<h:messages globalOnly="true"/>
 		<h:commandButton value="Entrar" action="#{usuarioBean.logar}" class="btn waves-effect waves-dark green"/>
 	</h:form>
 	</fieldset>
