@@ -7,6 +7,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import modelo.dao.UsuarioDAO;
+import modelo.pojo.Md5;
 import modelo.pojo.Usuario;
 
 @ManagedBean
@@ -25,8 +26,8 @@ public class UsuarioBean {
 	
 	public String logar()
 	{
-		System.out.println("Buscando...");
-		boolean sucefull = usuDao.colsultaSenha(nickname, senha);
+		String hash = Md5.stringToMd5(senha);
+		boolean sucefull = usuDao.colsultaSenha(nickname, hash);
 		System.out.println(sucefull);
 		FacesContext fc = FacesContext.getCurrentInstance();
 		if(sucefull) {
@@ -45,12 +46,10 @@ public class UsuarioBean {
 	
 	public String logout() 
 	{
-		System.out.println("Saindo");
 		FacesContext fc = FacesContext.getCurrentInstance();
 		ExternalContext ec = fc.getExternalContext();
 		HttpSession session = (HttpSession) ec.getSession(false);
 		session.invalidate();
-		System.out.println("Killed in the name of");
 		return "Login.xhtml";
 		
 	}

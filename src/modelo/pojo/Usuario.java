@@ -1,9 +1,5 @@
 package modelo.pojo;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 /**
  * Essa classe se remete aos usuarios do sistema
  * */
@@ -23,30 +19,11 @@ public class Usuario {
 	 * */
 	public Usuario(String nicknameUsuario, String senha, String nome, String email) {
 		this.nicknameUsuario = nicknameUsuario;
-		this.senha = stringToMd5(senha);
+		this.senha = Md5.stringToMd5(senha);
 		this.nome = nome;
 		this.email = email;
 	}
-	
-	
-	public String stringToMd5(String texto) 
-	{
-		String hash = texto;
-		try {
-			MessageDigest m;
-			m = MessageDigest.getInstance("MD5");
-			m.update(texto.getBytes(),0,texto.length());
-     	    hash = new BigInteger(1,m.digest()).toString(16);
-
-		} 
-		catch (NoSuchAlgorithmException e)
-		{
-			e.printStackTrace();
-		}
 		
-		return hash;
-	 }
-	
 	//Getters and Setters:
 	public String getNicknameUsuario() {
 		return nicknameUsuario;
@@ -58,7 +35,7 @@ public class Usuario {
 		return senha;
 	}
 	public void setSenha(String senha) {
-		this.senha = stringToMd5(senha);
+		this.senha = Md5.stringToMd5(senha);
 	}
 	public String getNome() {
 		return nome;
