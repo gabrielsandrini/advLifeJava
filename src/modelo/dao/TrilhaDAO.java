@@ -88,14 +88,12 @@ public class TrilhaDAO {
 	public ArrayList<Trilha> buscarTrilha(String apelido, double distancia, int idMata, int dificuldade, String nicknameUsuario,
 			int idLocomocao) {
 		/*
-		 * Primeiramente, peço desculpas pelo código feio e as gambiarras presentes nessa função, mas não vou refatorar não,
-		 * já tá dificil de fazer, e não to usando git.
-		 * Vamos a algumas considerações importantes para entender a gambiarra:
 		 * todos os parametros que tenham valores null, são passsados como -1.
 		 * nickname nulo = "null"
 		 * A primeira sequencia de IF arruma a String sql para criar o PreparedStatement
 		 * A segunda sequencia de IF faz pstmt.setString();
 		 * */
+		
 		ResultSet rs = null;
 		ArrayList<Trilha> trilhas = new ArrayList<Trilha>();
 		Connection conexao = factoryConnection.getConnection();
